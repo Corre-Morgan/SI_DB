@@ -1,8 +1,14 @@
 <?php
-if(isset($_POST)){
-
+require_once 'database.php';
+if(!empty($_POST)){
+    var_dump($_POST);
+    if (Database::get_instance($_POST['identifiant'], $_POST['mdp']) == null){
+        unset($_POST);
+        header("Location: http://10.0.0.1/php/connexion.php");
+    }
 }
-else{?>
+else{
+?>
     <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
 
     <html lang="fr">
@@ -25,7 +31,7 @@ else{?>
     <body>
     <h1 class="ui header centered">SI BD</h1>
     <div class="ui one column centered grid">
-        <form id="form" action="index.php" method="post">
+        <form id="form" action="" method="post">
             <div class="ui four wide column">
                 <div class="ui form grouped fields">
                     <div class="ui form field">
@@ -46,6 +52,5 @@ else{?>
     </div>
     </body>
     </html>
-<?php}
-
-
+<?php
+    }
