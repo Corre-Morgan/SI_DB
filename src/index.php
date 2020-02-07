@@ -24,7 +24,7 @@
     <body>
         <h1>TurnKey LAMP</h1>
 
-        <a href="inscription.php">Inscription</a>
+        <a href="php/connexion.php">Connexion</a>
 
         <div id="container-1">
             <ul>
