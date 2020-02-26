@@ -43,7 +43,5 @@ echo '
         <button class="ui primary button">
             <input type="submit" name="submit" value="Créer">
         </button>
-        
-        <a href="../../accueil.php">Retour</a>
     </form>
 ';

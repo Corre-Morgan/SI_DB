@@ -25,6 +25,7 @@
         <h1>TurnKey LAMP</h1>
 
         <a href="php/connexion.php">Connexion</a>
+        <a href="php/views/user/new.php">Create</a>
 
         <div id="container-1">
             <ul>
@@ -47,6 +48,10 @@
                         <a href="https://<?php print
                         $_SERVER{'HTTP_HOST'}; ?>:12322"><img
                         src="images/phpmyadmin.png"/>PHPMyAdmin</a>
+                    </div>
+                    <div>
+                        <a href="php/accueil.php"><img
+                        src="images/data1.png"/>Go</a>
                     </div>
                     <div></div>
                     <div></div>
