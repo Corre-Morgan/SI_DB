@@ -87,13 +87,4 @@ class Database
     {
         return $this->PDO_instance->query($query);
     }
-
-    public function get_user(){
-        $query = Database::get_instance()->query('SELECT User, Password FROM user');
-        $users = array();
-        while($user = $query->fetch(PDO::FETCH_OBJ)){
-            array_push($users, $user);
-        }
-        return $users;
-    }
 }
