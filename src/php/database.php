@@ -20,25 +20,11 @@ class Database
     private static $instance = null;
 
     /**
-     * Constante: nom d'utilisateur de la bdd
-     *
-     * @var string
-     */
-    const DEFAULT_SQL_USER = 'root';
-
-    /**
      * Constante: hôte de la bdd
      *
      * @var string
      */
     const DEFAULT_SQL_HOST = 'localhost';
-
-    /**
-     * Constante: hôte de la bdd
-     *
-     * @var string
-     */
-    const DEFAULT_SQL_PASS = 'root';
 
     /**
      * Constante: nom de la bdd

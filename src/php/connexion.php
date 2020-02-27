@@ -1,11 +1,11 @@
 <?php
 require_once 'database.php';
 if(!empty($_POST)){
-    var_dump($_POST);
     if (Database::get_instance($_POST['identifiant'], $_POST['mdp']) == null){
         unset($_POST);
         header("Location: http://10.0.0.1/php/connexion.php");
     }
+    else {header("Location: accueil.php");}
 }
 else{
 ?>
