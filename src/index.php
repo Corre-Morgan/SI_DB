@@ -49,10 +49,6 @@
                         $_SERVER{'HTTP_HOST'}; ?>:12322"><img
                         src="images/phpmyadmin.png"/>PHPMyAdmin</a>
                     </div>
-                    <div>
-                        <a href="php/accueil.php"><img
-                        src="images/data1.png"/>Go</a>
-                    </div>
                     <div></div>
                     <div></div>
 
