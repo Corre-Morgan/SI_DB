@@ -1,4 +1,5 @@
 <?php
+
 echo '
     <form id="edit_transaction" class="form" action="edit.php" method="post" enctype="multipart/form-data">
         <div class="ui input error">

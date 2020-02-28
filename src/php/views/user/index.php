@@ -35,6 +35,8 @@ echo '
                     foreach ($user as $data){
                         echo '<td>'.$data.'</td>';
                     }
+                    echo '<td><a href="edit.php?id='.$user["id"].'">Modif</a></td>';
+                    echo '<td><a href="delete.php?id='.$user["id"].'">Suppr</a></td>';
                     echo '</tr>';
                 }
   echo' </tbody>

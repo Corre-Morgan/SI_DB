@@ -3,7 +3,7 @@ require_once "../../controllers/issue.php";
 include_once '../../header.php';
 ini_set('display_errors', 'on');
 error_reporting(E_ALL);
-UserController::load_users();
+UserController::load_issues();
 echo '
     <table>
         <thead>

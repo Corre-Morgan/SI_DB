@@ -1,44 +1,50 @@
 <?php
+require_once "../../controllers/user.php";
+include_once '../../header.php';
+ini_set('display_errors', 'on');
+error_reporting(E_ALL);
+UserController::load_user($_GET["id"]);
+$data = $_SESSION['user'];
 echo '
     <form id="edit_user" class="form" action="edit.php" method="post" enctype="multipart/form-data">
         <div class="ui input error">
-            <input type="text" name="username" placeholder="pseudo">
+            <input value="'.$data["username"].'" type="text" name="username" placeholder="pseudo">
         </div>
         <div class="ui input error">
-            <input type="text" name="last_name" placeholder="Nom">
+            <input value="'.$data["last_name"].'" type="text" name="last_name" placeholder="Nom">
         </div>
         <div class="ui input error">
-            <input type="text" name="first_name" placeholder="Prénom">
+            <input value="'.$data["first_name"].'" type="text" name="first_name" placeholder="Prénom">
         </div>
         <div class="ui input error">
-            <input type="email" name="email" placeholder="email">
+            <input value="'.$data["email"].'" type="email" name="email" placeholder="email">
         </div>
         <div class="ui input error">
-            <input type="password" name="password" placeholder="Mot de passe">
+            <input value="'.$data["password"].'" type="password" name="password" placeholder="Mot de passe">
         </div>
         <div class="ui input error">
-            <input type="text" name="gender" placeholder="sexe">
+            <input  value="'.$data["gender"].'"type="text" name="gender" placeholder="sexe">
         </div>
         <div class="ui input error">
-            <input type="tel" name="phone" placeholder="Téléphone">
+            <input value="'.$data["phone"].'" type="tel" name="phone" placeholder="Téléphone">
         </div>
         <div class="ui input error">
-            <input type="text" name="country" placeholder="pays">
+            <input value="'.$data["country"].'" type="text" name="country" placeholder="pays">
         </div>
         <div class="ui input error">
-            <input type="date" name="birthdate" placeholder="date de naissance">
+            <input value="'.$data["birth_date"].'" type="date" name="birth_date" placeholder="date de naissance">
         </div>
         <div class="ui input error">
-            <input type="text" name="address" placeholder="Adresse">
+            <input value="'.$data["address"].'" type="text" name="address" placeholder="Adresse">
         </div>
         <div class="ui input error">
-            <input type="text" name="description" placeholder="Description">
+            <input value="'.$data["description"].'" type="text" name="description" placeholder="Description">
         </div>
         <div class="ui input error">
-            <input type="text" name="website" placeholder="Site internet">
+            <input value="'.$data["website"].'" type="text" name="website" placeholder="Site internet">
         </div>
         <div class="ui input error">
-            <input type="file" name="avatar" placeholder="avatar">
+            <input value="'.$data["avatar"].'" type="file" name="avatar" placeholder="avatar">
         </div>
         <button class="ui primary button">
             <input type="submit" name="submit" value="Créer">
