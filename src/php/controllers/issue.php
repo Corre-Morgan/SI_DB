@@ -5,11 +5,15 @@ require_once 'database.php';
 Class IssueController{
 
     static function load_issue($id){
-        $_SESSION['issue'] = Database::get_instance($_SESSION['pseudo'], $_SESSION['password'])->query('SELECT * FROM Issue WHERE id ='. $id);
+        $_SESSION['issue'] = Database::get_instance($_SESSION['pseudo'], $_SESSION['password'])->query('SELECT * FROM Issue WHERE id ='. $id)->fetch(PDO::FETCH_ASSOC);
     }
 
     static function load_issues(){
-        $_SESSION['issues'] = Database::get_instance($_SESSION['pseudo'], $_SESSION['password'])->query('SELECT * FROM Issue');
+        $_SESSION['issues'] = array();
+        $temp = Database::get_instance($_SESSION['pseudo'], $_SESSION['password'])->query('SELECT * FROM Issue');
+        while( $row = $temp->fetch(PDO::FETCH_ASSOC)){
+            array_push($_SESSION['issues'], $row);
+        }
     }
 
     static function create($params){

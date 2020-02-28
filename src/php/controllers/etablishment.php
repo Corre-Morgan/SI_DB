@@ -5,11 +5,15 @@ require_once 'database.php';
 Class EtablishmentController{
 
     static function load_etablishment($id){
-        $_SESSION['etablishment'] = Database::get_instance($_SESSION['pseudo'], $_SESSION['password'])->query('SELECT * FROM Etablishment WHERE id ='. $id);
+        $_SESSION['etablishment'] = Database::get_instance($_SESSION['pseudo'], $_SESSION['password'])->query('SELECT * FROM Etablishment WHERE id ='. $id)->fetch(PDO::FETCH_ASSOC);
     }
 
     static function load_etablishments(){
-        $_SESSION['etablishments'] = Database::get_instance($_SESSION['pseudo'], $_SESSION['password'])->query('SELECT * FROM Etablishment');
+        $_SESSION['etablishments'] = array();
+        $temp = Database::get_instance($_SESSION['pseudo'], $_SESSION['password'])->query('SELECT * FROM Etablishment');
+        while( $row = $temp->fetch(PDO::FETCH_ASSOC)){
+            array_push($_SESSION['etablishments'], $row);
+        }
     }
 
     static function create($params){

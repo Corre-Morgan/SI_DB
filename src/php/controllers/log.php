@@ -5,11 +5,15 @@ require_once 'database.php';
 Class LogController{
 
     static function load_log($id){
-        $_SESSION['log'] = Database::get_instance($_SESSION['pseudo'], $_SESSION['password'])->query('SELECT * FROM Log WHERE id ='. $id);
+        $_SESSION['log'] = Database::get_instance($_SESSION['pseudo'], $_SESSION['password'])->query('SELECT * FROM Log WHERE id ='. $id)->fetch(PDO::FETCH_ASSOC);
     }
 
     static function load_logs(){
-        $_SESSION['logs'] = Database::get_instance($_SESSION['pseudo'], $_SESSION['password'])->query('SELECT * FROM Log');
+        $_SESSION['logs'] = array();
+        $temp= Database::get_instance($_SESSION['pseudo'], $_SESSION['password'])->query('SELECT * FROM Log');
+        while( $row = $temp->fetch(PDO::FETCH_ASSOC)){
+            array_push($_SESSION['logs'], $row);
+        }
     }
 
     static function create($params){

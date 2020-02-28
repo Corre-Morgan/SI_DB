@@ -5,11 +5,15 @@ require_once 'database.php';
 Class PrizeController{
 
     static function load_prize($id){
-        $_SESSION['prize'] = Database::get_instance($_SESSION['pseudo'], $_SESSION['password'])->query('SELECT * FROM Prize WHERE id_contest ='. $id);
+        $_SESSION['prize'] = Database::get_instance($_SESSION['pseudo'], $_SESSION['password'])->query('SELECT * FROM Prize WHERE id_contest ='. $id)->fetch(PDO::FETCH_ASSOC);
     }
 
     static function load_prizes(){
-        $_SESSION['prizes'] = Database::get_instance($_SESSION['pseudo'], $_SESSION['password'])->query('SELECT * FROM Prize');
+        $_SESSION['prizes'] = array();
+        $temp = Database::get_instance($_SESSION['pseudo'], $_SESSION['password'])->query('SELECT * FROM Prize');
+        while( $row = $temp->fetch(PDO::FETCH_ASSOC)){
+            array_push($_SESSION['prizes'], $row);
+        }
     }
 
     static function create($params){

@@ -5,11 +5,15 @@ require_once 'database.php';
 Class NewspaperController{
 
     static function load_newspaper($id){
-        $_SESSION['newspaper'] = Database::get_instance($_SESSION['pseudo'], $_SESSION['password'])->query('SELECT * FROM Newspaper WHERE id ='. $id);
+        $_SESSION['newspaper'] = Database::get_instance($_SESSION['pseudo'], $_SESSION['password'])->query('SELECT * FROM Newspaper WHERE id ='. $id)->fetch(PDO::FETCH_ASSOC);
     }
 
     static function load_newspapers(){
-        $_SESSION['newspapers'] = Database::get_instance($_SESSION['pseudo'], $_SESSION['password'])->query('SELECT * FROM Newspaper');
+        $_SESSION['newspapers'] =array();
+        $temp = Database::get_instance($_SESSION['pseudo'], $_SESSION['password'])->query('SELECT * FROM Newspaper');
+        while( $row = $temp->fetch(PDO::FETCH_ASSOC)){
+            array_push($_SESSION['newspapers'], $row);
+        }
     }
 
     static function create($params){

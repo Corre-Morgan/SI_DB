@@ -5,11 +5,15 @@ require_once 'database.php';
 Class FacilityController{
 
     static function load_facility($id){
-        $_SESSION['facility'] = Database::get_instance($_SESSION['pseudo'], $_SESSION['password'])->query('SELECT * FROM Facility WHERE id ='. $id);
+        $_SESSION['facility'] = Database::get_instance($_SESSION['pseudo'], $_SESSION['password'])->query('SELECT * FROM Facility WHERE id ='. $id)->fetch(PDO::FETCH_ASSOC);
     }
 
     static function load_facilities(){
-        $_SESSION['facilities'] = Database::get_instance($_SESSION['pseudo'], $_SESSION['password'])->query('SELECT * FROM Facility');
+        $_SESSION['facilities'] = array();
+        $temp = Database::get_instance($_SESSION['pseudo'], $_SESSION['password'])->query('SELECT * FROM Facility');
+        while( $row = $temp->fetch(PDO::FETCH_ASSOC)){
+            array_push($_SESSION['facilities'], $row);
+        }
     }
 
     static function create($params){
