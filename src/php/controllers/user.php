@@ -11,10 +11,10 @@ Class UserController{
 
     static function load_users(){
         $_SESSION["users"] = array();
-         $temp = Database::get_instance($_SESSION['pseudo'], $_SESSION['password'])->query('SELECT * FROM User');
-         while( $row = $temp->fetch(PDO::FETCH_ASSOC)){
-             array_push($_SESSION["users"], $row);
-         }
+        $temp = Database::get_instance($_SESSION['pseudo'], $_SESSION['password'])->query('SELECT * FROM User LIMIT 10');
+        while( $row = $temp->fetch(PDO::FETCH_ASSOC)){
+            array_push($_SESSION["users"], $row);
+        }
     }
 
     static function create($params){
@@ -32,9 +32,7 @@ Class UserController{
                 last_name = "'.$params['last_name'].'",birth_date = "'.$params['birthdate'].'", address = "'.$params['address'].'",
                 avatar = "'.$params['avatar'].'", description = "'.$params['description'].'", website = "'.$params['website'].'"
                 WHERE id ='. $id;
-        var_dump($id);
-        var_dump(Database::get_instance($_SESSION['pseudo'], $_SESSION['password'])->query($query));
-        die();
+        Database::get_instance($_SESSION['pseudo'], $_SESSION['password'])->query($query);
     }
 
     static function delete($id){

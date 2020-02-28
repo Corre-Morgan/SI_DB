@@ -1,4 +1,5 @@
 <?php
+include_once '../../header.php';
 echo '
     <form id="etablishment" class="form" action="create.php" method="post" enctype="multipart/form-data">
         <div class="ui input error">

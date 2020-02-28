@@ -1,5 +1,4 @@
 <?php
-
 require_once "../../controllers/transaction.php";
 include_once '../../header.php';
 ini_set('display_errors', 'on');

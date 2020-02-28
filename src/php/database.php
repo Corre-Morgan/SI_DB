@@ -77,8 +77,6 @@ class Database
      */
     public function query($query)
     {
-        $result = $this->PDO_instance->query($query);
-        print_r($this->PDO_instance->errorInfo());
-        return $result;
+        return $this->PDO_instance->query($query);
     }
 }
