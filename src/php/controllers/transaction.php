@@ -5,11 +5,15 @@ require_once 'database.php';
 Class TransactionController{
 
     static function load_transaction($id){
-        $_SESSION['transaction'] = Database::get_instance($_SESSION['pseudo'], $_SESSION['password'])->query('SELECT * FROM Transaction WHERE id ='. $id);
+        $_SESSION['transaction'] = Database::get_instance($_SESSION['pseudo'], $_SESSION['password'])->query('SELECT * FROM Transaction WHERE id ='. $id)->fetch(PDO::FETCH_ASSOC);
     }
 
     static function load_transactions(){
-        $_SESSION['transactions'] = Database::get_instance($_SESSION['pseudo'], $_SESSION['password'])->query('SELECT * FROM Transaction');
+        $_SESSION['transactions'] = array();
+        $temp = Database::get_instance($_SESSION['pseudo'], $_SESSION['password'])->query('SELECT * FROM Transaction');
+        while( $row = $temp->fetch(PDO::FETCH_ASSOC)){
+            array_push($_SESSION['transactions'], $row);
+        }
     }
 
     static function create($params){

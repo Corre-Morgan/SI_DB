@@ -5,11 +5,15 @@ require_once 'database.php';
 Class TaskController{
 
     static function load_task($id){
-        $_SESSION['task'] = Database::get_instance($_SESSION['pseudo'], $_SESSION['password'])->query('SELECT * FROM Task WHERE id ='. $id);
+        $_SESSION['task'] = Database::get_instance($_SESSION['pseudo'], $_SESSION['password'])->query('SELECT * FROM Task WHERE id ='. $id)->fetch(PDO::FETCH_ASSOC);
     }
 
     static function load_tasks(){
-        $_SESSION['tasks'] = Database::get_instance($_SESSION['pseudo'], $_SESSION['password'])->query('SELECT * FROM Task');
+        $_SESSION['tasks'] = array();
+        $temp = Database::get_instance($_SESSION['pseudo'], $_SESSION['password'])->query('SELECT * FROM Task');
+        while( $row = $temp->fetch(PDO::FETCH_ASSOC)){
+            array_push($_SESSION['tasks'], $row);
+        }
     }
 
     static function create($params){

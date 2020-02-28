@@ -5,11 +5,15 @@ require_once 'database.php';
 Class HorseIssueController{
 
     static function load_horse_issue($params){
-        $_SESSION['horse_issue'] = Database::get_instance($_SESSION['pseudo'], $_SESSION['password'])->query('SELECT * FROM Horse_Issue WHERE id_horse = '.$params['id_horse'].' AND id_issue = '.$params['id_issue']);
+        $_SESSION['horse_issue'] = Database::get_instance($_SESSION['pseudo'], $_SESSION['password'])->query('SELECT * FROM Horse_Issue WHERE id_horse = '.$params['id_horse'].' AND id_issue = '.$params['id_issue'])->fetch(PDO::FETCH_ASSOC);
     }
 
     static function load_horse_issues(){
-        $_SESSION['horse_issues'] = Database::get_instance($_SESSION['pseudo'], $_SESSION['password'])->query('SELECT * FROM Horse_Issue');
+        $_SESSION['horse_issues'] = array();
+        $temp= Database::get_instance($_SESSION['pseudo'], $_SESSION['password'])->query('SELECT * FROM Horse_Issue');
+        while( $row = $temp->fetch(PDO::FETCH_ASSOC)){
+            array_push($_SESSION['horse_issues'], $row);
+        }
     }
 
     static function create($params){

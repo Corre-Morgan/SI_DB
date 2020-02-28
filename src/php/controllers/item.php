@@ -5,11 +5,15 @@ require_once 'database.php';
 Class ItemController{
 
     static function load_item($id){
-        $_SESSION['item'] = Database::get_instance($_SESSION['pseudo'], $_SESSION['password'])->query('SELECT * FROM Item WHERE id ='. $id);
+        $_SESSION['item'] = Database::get_instance($_SESSION['pseudo'], $_SESSION['password'])->query('SELECT * FROM Item WHERE id ='. $id)->fetch(PDO::FETCH_ASSOC);
     }
 
     static function load_items(){
-        $_SESSION['items'] = Database::get_instance($_SESSION['pseudo'], $_SESSION['password'])->query('SELECT * FROM Item');
+        $_SESSION['items'] = array();
+        $temp = Database::get_instance($_SESSION['pseudo'], $_SESSION['password'])->query('SELECT * FROM Item');
+        while( $row = $temp->fetch(PDO::FETCH_ASSOC)){
+            array_push($_SESSION['items'], $row);
+        }
     }
 
     static function create($params){

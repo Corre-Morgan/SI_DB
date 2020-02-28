@@ -5,11 +5,15 @@ require_once 'database.php';
 Class ArticleController{
 
     static function load_article($id){
-        $_SESSION['article'] = Database::get_instance($_SESSION['pseudo'], $_SESSION['password'])->query('SELECT * FROM Article WHERE id ='. $id);
+        $_SESSION['article'] = Database::get_instance($_SESSION['pseudo'], $_SESSION['password'])->query('SELECT * FROM Article WHERE id ='. $id)->fetch(PDO::FETCH_ASSOC);
     }
 
     static function load_articles(){
-        $_SESSION['articles'] = Database::get_instance($_SESSION['pseudo'], $_SESSION['password'])->query('SELECT * FROM Article');
+        $_SESSION['articles'] = array();
+        $temp = Database::get_instance($_SESSION['pseudo'], $_SESSION['password'])->query('SELECT * FROM Article');
+        while( $row = $temp->fetch(PDO::FETCH_ASSOC)){
+            array_push($_SESSION['articles'], $row);
+        }
     }
 
     static function create($params){
