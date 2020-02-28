@@ -43,7 +43,12 @@ class Database
      */
     private function __construct($username, $passwd)
     {
-        $this->PDO_instance = new PDO('mysql:dbname='.self::DEFAULT_SQL_DTB.';host='.self::DEFAULT_SQL_HOST,$username, $passwd);
+        try{
+            $this->PDO_instance = new PDO('mysql:dbname='.self::DEFAULT_SQL_DTB.';host='.self::DEFAULT_SQL_HOST,$username, $passwd);
+        }
+        catch (PDOException $e){
+            $e->getMessage();
+        }
     }
 
     /**
@@ -60,6 +65,7 @@ class Database
         {
             self::$instance = new Database($username, $passwd);
         }
+        if (is_null(self::$instance->PDO_instance)){return null;}
         return self::$instance;
     }
 

@@ -1,11 +1,18 @@
 <?php
 require_once 'database.php';
+session_start();
+ini_set('display_errors', 'on');
+error_reporting(E_ALL);
 if(!empty($_POST)){
-    if (Database::get_instance($_POST['identifiant'], $_POST['mdp']) == null){
-        unset($_POST);
-        header("Location: http://10.0.0.1/php/connexion.php");
+    if (Database::get_instance($_POST['identifiant'], $_POST['mdp'])) {
+        $_SESSION['pseudo'] = $_POST['identifiant'];
+        $_SESSION['password'] = $_POST['mdp'];
+            header("Location: accueil.php");
     }
-    else {header("Location: accueil.php");}
+    else {
+        unset($_POST);
+        header("Location: connexion.php");
+    }
 }
 else{
 ?>
