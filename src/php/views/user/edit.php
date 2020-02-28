@@ -22,9 +22,20 @@ echo '
         <div class="ui input error">
             <input value="'.$data["password"].'" type="password" name="password" placeholder="Mot de passe">
         </div>
-        <div class="ui input error">
-            <input  value="'.$data["gender"].'"type="text" name="gender" placeholder="sexe">
-        </div>
+        <div class="ui input error">';
+            if ($data['gender'] == "M"){
+                echo '<input type="radio" id="male" name="gender" value="M" checked>
+                    <label for="male">Homme</label>
+                    <input type="radio" id="female" name="gender" value="F">
+                    <label for="female">Femme</label>';
+            }else{
+                echo '<input type="radio" id="male" name="gender" value="H">
+                    <label for="male">Homme</label>
+                    <input type="radio" id="female" name="gender" value="F" checked>
+                    <label for="female">Femme</label>';
+            }
+
+        echo '</div>
         <div class="ui input error">
             <input value="'.$data["phone"].'" type="tel" name="phone" placeholder="Téléphone">
         </div>
