@@ -31,7 +31,7 @@ class Database
      *
      * @var string
      */
-    const DEFAULT_SQL_DTB = 'mysql';
+    const DEFAULT_SQL_DTB = 'SI_DB';
 
     /**
      * Constructeur
@@ -77,6 +77,8 @@ class Database
      */
     public function query($query)
     {
-        return $this->PDO_instance->query($query);
+        $result = $this->PDO_instance->query($query);
+        print_r($this->PDO_instance->errorInfo());
+        return $result;
     }
 }

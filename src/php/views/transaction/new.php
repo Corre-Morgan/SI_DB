@@ -2,7 +2,7 @@
 echo '
     <form id="transaction" class="form" action="create.php" method="post" enctype="multipart/form-data">
         <div class="ui input error">
-            <input type="text" name="id_user" placeholder="identifiant utilisateur">
+            <input type="number" name="id_user" placeholder="identifiant utilisateur">
         </div>
         <div class="ui input error">
             <input type="number" name="amount" placeholder="Somme">

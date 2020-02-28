@@ -6,11 +6,12 @@ require_once 'database.php';
 Class UserController{
 
     static function load_user($id){
-        $_SESSION['user'] = Database::get_instance($_SESSION['pseudo'], $_SESSION['password'])->query('SELECT * FROM User WHERE id ='. $id);
+        $_SESSION['user'] = Database::get_instance($_SESSION['pseudo'], $_SESSION['password'])->query('SELECT * FROM User WHERE id ='. $id)->fetch();
     }
 
     static function load_users(){
         $_SESSION['users'] = Database::get_instance($_SESSION['pseudo'], $_SESSION['password'])->query('SELECT * FROM User');
+        Database::get_instance($_SESSION['pseudo'], $_SESSION['password']);
     }
 
     static function create($params){
