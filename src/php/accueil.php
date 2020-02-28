@@ -1,4 +1,6 @@
 <?php
+ini_set('display_errors', 'on');
+error_reporting(E_ALL);
 echo '<div class="menu">
           <a href="views/article/index.php">Article</a>
           <a href="views/contest/index.php">Contest</a>

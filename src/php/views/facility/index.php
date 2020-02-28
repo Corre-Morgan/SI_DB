@@ -15,12 +15,17 @@ echo '
                 <th>Stockage chevaux</th>
             </tr>
         </thead>
-        <tbody>
-            <tr>
-                
-            </tr>
-        </tbody>
+        <tbody>';
+                foreach ($_SESSION['facilities'] as $facility){
+                    echo '<tr>';
+                    foreach ($facility as $data){
+                        echo '<td>'.$data.'</td>';
+                    }
+                    echo '</tr>';
+                }
+
+  echo' </tbody>
     </table>
     
-    <a href="create.php">Nouveau</a>
+    <a href="new.php">Nouveau</a>
 ';

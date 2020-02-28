@@ -1,47 +1,34 @@
 <?php
 echo '
-    <form id="user" class="form" action="create.php" method="post" enctype="multipart/form-data">
+    <form id="edit_facility" class="form" action="edit.php" method="post" enctype="multipart/form-data">
         <div class="ui input error">
-            <input type="text" name="username" placeholder="pseudo">
+            <input type="number" name="id_etablishment" placeholder="N° etablissement">
         </div>
         <div class="ui input error">
-            <input type="text" name="last_name" placeholder="Nom">
+            <input type="text" name="type" placeholder="Type">
         </div>
         <div class="ui input error">
-            <input type="text" name="first_name" placeholder="Prénom">
-        </div>
-        <div class="ui input error">
-            <input type="email" name="email" placeholder="email">
-        </div>
-        <div class="ui input error">
-            <input type="password" name="password" placeholder="Mot de passe">
-        </div>
-        <div class="ui input error">
-            <input type="text" name="gender" placeholder="sexe">
-        </div>
-        <div class="ui input error">
-            <input type="tel" name="phone" placeholder="Téléphone">
-        </div>
-        <div class="ui input error">
-            <input type="text" name="country" placeholder="pays">
-        </div>
-        <div class="ui input error">
-            <input type="date" name="birthdate" placeholder="date de naissance">
-        </div>
-        <div class="ui input error">
-            <input type="text" name="address" placeholder="Adresse">
+            <input type="number" name="lvl" placeholder="Niveau">
         </div>
         <div class="ui input error">
             <input type="text" name="description" placeholder="Description">
         </div>
         <div class="ui input error">
-            <input type="text" name="website" placeholder="Site internet">
+            <input type="text" name="family" placeholder="Famille">
         </div>
         <div class="ui input error">
-            <input type="file" name="avatar" placeholder="avatar">
+            <input type="number" name="price" placeholder="Prix">
         </div>
-        <button class="ui primary button">
-            <input type="submit" name="submit" value="Créer">
-        </button>
+        <div class="ui input error">
+            <input type="number" name="ressource_consumption" placeholder="Consommation">
+        </div>
+        <div class="ui input error">
+            <input type="number" name="item_capacity" placeholder="Capacité stockage item">
+        </div>
+        <div class="ui input error">
+            <input type="number" name="horse_capacity" placeholder="Capacité stockage chevaux>
+        </div>
+        
+        <a href="../../accueil.php">Retour</a>
     </form>
 ';

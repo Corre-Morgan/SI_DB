@@ -1,47 +1,70 @@
 <?php
 echo '
-    <form id="user" class="form" action="create.php" method="post" enctype="multipart/form-data">
+    <form id="edit_horse" class="form" action="edit.php" method="post" enctype="multipart/form-data">
         <div class="ui input error">
-            <input type="text" name="username" placeholder="pseudo">
+            <input type="number" name="id_user" placeholder="N° user">
         </div>
         <div class="ui input error">
-            <input type="text" name="last_name" placeholder="Nom">
+            <input type="number" name="id_riding_center" placeholder="N° centre equestre">
         </div>
         <div class="ui input error">
-            <input type="text" name="first_name" placeholder="Prénom">
+            <input type="text" name="name" placeholder="Nom">
         </div>
         <div class="ui input error">
-            <input type="email" name="email" placeholder="email">
+            <input type="text" name="breed" placeholder="Breed">
         </div>
         <div class="ui input error">
-            <input type="password" name="password" placeholder="Mot de passe">
+            <input type="number" name="lvl" placeholder="Niveau">
         </div>
         <div class="ui input error">
-            <input type="text" name="gender" placeholder="sexe">
+            <input type="number" name="exp" placeholder="Experience">
         </div>
         <div class="ui input error">
-            <input type="tel" name="phone" placeholder="Téléphone">
+            <input type="number" name="overall_condition" placeholder="Etat de santé général">
         </div>
         <div class="ui input error">
-            <input type="text" name="country" placeholder="pays">
+            <input type="number" name="health" placeholder="Santé">
         </div>
         <div class="ui input error">
-            <input type="date" name="birthdate" placeholder="date de naissance">
+            <input type="number" name="moral" placeholder="Moral">
         </div>
         <div class="ui input error">
-            <input type="text" name="address" placeholder="Adresse">
+            <input type="number" name="stress" placeholder="Stress">
         </div>
         <div class="ui input error">
-            <input type="text" name="description" placeholder="Description">
+            <input type="number" name="tiredness" placeholder="Fatigue">
         </div>
         <div class="ui input error">
-            <input type="text" name="website" placeholder="Site internet">
+            <input type="number" name="hunger" placeholder="Satieté">
         </div>
         <div class="ui input error">
-            <input type="file" name="avatar" placeholder="avatar">
+            <input type="number" name="hygiene" placeholder="Hygiene">
+        </div>
+        <div class="ui input error">
+            <input type="number" name="resistance" placeholder="Resistance">
+        </div>
+        <div class="ui input error">
+            <input type="number" name="stamina" placeholder="Endurance">
+        </div>
+        <div class="ui input error">
+            <input type="number" name="jump" placeholder="Saut">
+        </div>
+        <div class="ui input error">
+            <input type="number" name="speed" placeholder="Vitesse">
+        </div>
+        <div class="ui input error">
+            <input type="number" name="social" placeholder="Social">
+        </div>
+        <div class="ui input error">
+            <input type="number" name="intelligence" placeholder="Intel">
+        </div>
+        <div class="ui input error">
+            <input type="number" name="temper" placeholder="Tempérament">
         </div>
         <button class="ui primary button">
             <input type="submit" name="submit" value="Créer">
         </button>
+        
+        <a href="../../accueil.php">Retour</a>
     </form>
 ';

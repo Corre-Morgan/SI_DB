@@ -1,4 +1,10 @@
 <?php
+require_once "../../controllers/user.php";
+ini_set('display_errors', 'on');
+error_reporting(E_ALL);
+UserController::load_users();
+var_dump($_SESSION);
+
 echo '
     <table>
         <thead>
@@ -23,11 +29,15 @@ echo '
                 <th>Argent</th>
             </tr>
         </thead>
-        <tbody>
-            <tr>
-                
-            </tr>
-        </tbody>
+        <tbody>';
+                foreach ($_SESSION['users'] as $user){
+                    echo '<tr>';
+                    foreach ($user as $data){
+                        echo '<td>'.$data.'</td>';
+                    }
+                    echo '</tr>';
+                }
+  echo' </tbody>
     </table>
     
     <a href="new.php">Nouveau</a>

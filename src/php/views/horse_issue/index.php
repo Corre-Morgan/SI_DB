@@ -7,12 +7,17 @@ echo '
                 <th>N° issue</th>
             </tr>
         </thead>
-        <tbody>
-            <tr>
-                
-            </tr>
-        </tbody>
+        <tbody>';
+                foreach ($_SESSION['horse_issues'] as $hi){
+                    echo '<tr>';
+                    foreach ($hi as $data){
+                        echo '<td>'.$data.'</td>';
+                    }
+                    echo '</tr>';
+                }
+
+  echo' </tbody>
     </table>
     
-    <a href="create.php">Nouveau</a>
+    <a href="new.php">Nouveau</a>
 ';

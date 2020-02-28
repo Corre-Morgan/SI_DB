@@ -1,6 +1,6 @@
 <?php
 echo '
-    <form id="user" class="form" action="create.php" method="post" enctype="multipart/form-data">
+    <form id="edit_user" class="form" action="edit.php" method="post" enctype="multipart/form-data">
         <div class="ui input error">
             <input type="text" name="username" placeholder="pseudo">
         </div>
@@ -43,5 +43,7 @@ echo '
         <button class="ui primary button">
             <input type="submit" name="submit" value="Créer">
         </button>
+        
+        <a href="../../accueil.php">Retour</a>
     </form>
 ';

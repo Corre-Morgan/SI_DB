@@ -28,21 +28,6 @@ echo '
         <div class="ui input error">
             <input type="number" name="horse_capacity" placeholder="Capacité stockage chevaux>
         </div>
-        <div class="ui input error">
-            <input type="text" name="address" placeholder="Adresse">
-        </div>
-        <div class="ui input error">
-            <input type="text" name="description" placeholder="Description">
-        </div>
-        <div class="ui input error">
-            <input type="text" name="website" placeholder="Site internet">
-        </div>
-        <div class="ui input error">
-            <input type="file" name="avatar" placeholder="avatar">
-        </div>
-        <button class="ui primary button">
-            <input type="submit" name="submit" value="Créer">
-        </button>
         
         <a href="../../accueil.php">Retour</a>
     </form>

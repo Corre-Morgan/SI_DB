@@ -7,14 +7,20 @@ echo '
                 <th>titre</th>
                 <th>description</th>
                 <th>image</th>
+                <th colspan="2">Action</th>
             </tr>
         </thead>
-        <tbody>
-            <tr>
-                
-            </tr>
-        </tbody>
+        <tbody>';
+                foreach ($_SESSION['articles'] as $article){
+                    echo '<tr>';
+                    foreach ($article as $data){
+                        echo '<td>'.$data.'</td>';
+                    }
+                    echo '</tr>';
+                }
+
+  echo' </tbody>
     </table>
     
-    <a href="create.php">Nouveau</a>
+    <a href="new.php">Nouveau</a>
 ';

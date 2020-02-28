@@ -26,12 +26,17 @@ echo '
                 <th>Tempérament</th>
             </tr>
         </thead>
-        <tbody>
-            <tr>
-                
-            </tr>
-        </tbody>
+        <tbody>';
+                foreach ($_SESSION['horses'] as $horse){
+                    echo '<tr>';
+                    foreach ($horse as $data){
+                        echo '<td>'.$data.'</td>';
+                    }
+                    echo '</tr>';
+                }
+
+  echo' </tbody>
     </table>
     
-    <a href="create.php">Nouveau</a>
+    <a href="new.php">Nouveau</a>
 ';

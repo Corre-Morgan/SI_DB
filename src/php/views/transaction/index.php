@@ -9,12 +9,15 @@ echo '
                 <th>Date</th>
             </tr>
         </thead>
-        <tbody>
-            <tr>
-                
-            </tr>
-        </tbody>
-    </table>
-    
+        <tbody>';
+                foreach ($_SESSION['transactions'] as $transaction){
+                    echo '<tr>';
+                    foreach ($transaction as $data){
+                        echo '<td>'.$data.'</td>';
+                    }
+                    echo '</tr>';
+                }
+  echo' </tbody>
+    </table>  
     <a href="new.php">Nouveau</a>
 ';
