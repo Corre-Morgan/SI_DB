@@ -3,7 +3,7 @@ require_once "../../controllers/horse.php";
 include_once '../../header.php';
 ini_set('display_errors', 'on');
 error_reporting(E_ALL);
-UserController::load_horse();
+HorseController::load_horses();
 echo '
     <table>
         <thead>
@@ -37,6 +37,8 @@ echo '
                     foreach ($horse as $data){
                         echo '<td>'.$data.'</td>';
                     }
+                    echo '<td><a href="edit.php?id='.$horse["id"].'">Modif</a></td>';
+                    echo '<td><a href="delete.php?id='.$horse["id"].'">Suppr</a></td>';
                     echo '</tr>';
                 }
 

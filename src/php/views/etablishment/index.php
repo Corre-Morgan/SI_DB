@@ -3,7 +3,7 @@ require_once "../../controllers/etablishment.php";
 include_once '../../header.php';
 ini_set('display_errors', 'on');
 error_reporting(E_ALL);
-UserController::load_etablishments();
+EtablishmentController::load_etablishments();
 echo '
     <table>
         <thead>
@@ -14,11 +14,13 @@ echo '
             </tr>
         </thead>
         <tbody>';
-                foreach ($_SESSION['users'] as $user){
+                foreach ($_SESSION['etablishments'] as $etablishment){
                     echo '<tr>';
-                    foreach ($user as $data){
+                    foreach ($etablishment as $data){
                         echo '<td>'.$data.'</td>';
                     }
+                    echo '<td><a href="edit.php?id='.$etablishment["id"].'">Modif</a></td>';
+                    echo '<td><a href="delete.php?id='.$etablishment["id"].'">Suppr</a></td>';
                     echo '</tr>';
                 }
 

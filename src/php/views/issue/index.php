@@ -3,7 +3,7 @@ require_once "../../controllers/issue.php";
 include_once '../../header.php';
 ini_set('display_errors', 'on');
 error_reporting(E_ALL);
-UserController::load_issues();
+IssueController::load_issues();
 echo '
     <table>
         <thead>
@@ -19,6 +19,8 @@ echo '
                     foreach ($issue as $data){
                         echo '<td>'.$data.'</td>';
                     }
+                    echo '<td><a href="edit.php?id='.$issue["id"].'">Modif</a></td>';
+                    echo '<td><a href="delete.php?id='.$issue["id"].'">Suppr</a></td>';
                     echo '</tr>';
                 }
 

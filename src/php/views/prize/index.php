@@ -3,7 +3,7 @@ require_once "../../controllers/prize.php";
 include_once '../../header.php';
 ini_set('display_errors', 'on');
 error_reporting(E_ALL);
-UserController::load_prizes();
+PrizeController::load_prizes();
 echo '
     <table>
         <thead>
@@ -19,6 +19,8 @@ echo '
                     foreach ($prize as $data){
                         echo '<td>'.$data.'</td>';
                     }
+                    echo '<td><a href="edit.php?id='.$prize["id"].'">Modif</a></td>';
+                    echo '<td><a href="delete.php?id='.$prize["id"].'">Suppr</a></td>';
                     echo '</tr>';
                 }
 

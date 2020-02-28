@@ -6,7 +6,7 @@ error_reporting(E_ALL);
 UserController::load_user($_GET["id"]);
 $data = $_SESSION['user'];
 echo '
-    <form id="edit_user" class="form" action="edit.php" method="post" enctype="multipart/form-data">
+    <form id="edit_user" class="form" action="update.php?id='.$_GET["id"].'" method="post" enctype="multipart/form-data">
         <div class="ui input error">
             <input value="'.$data["username"].'" type="text" name="username" placeholder="pseudo">
         </div>

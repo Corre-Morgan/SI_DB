@@ -3,7 +3,7 @@ require_once "../../controllers/log.php";
 include_once '../../header.php';
 ini_set('display_errors', 'on');
 error_reporting(E_ALL);
-UserController::load_logs();
+LogController::load_logs();
 echo '
     <table>
         <thead>
@@ -21,6 +21,8 @@ echo '
                     foreach ($log as $data){
                         echo '<td>'.$data.'</td>';
                     }
+                    echo '<td><a href="edit.php?id='.$log["id"].'">Modif</a></td>';
+                    echo '<td><a href="delete.php?id='.$log["id"].'">Suppr</a></td>';
                     echo '</tr>';
                 }
 

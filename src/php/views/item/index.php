@@ -3,7 +3,7 @@ require_once "../../controllers/item.php";
 include_once '../../header.php';
 ini_set('display_errors', 'on');
 error_reporting(E_ALL);
-UserController::load_items();
+ItemController::load_items();
 echo '
     <table>
         <thead>
@@ -24,6 +24,8 @@ echo '
                     foreach ($item as $data){
                         echo '<td>'.$data.'</td>';
                     }
+                    echo '<td><a href="edit.php?id='.$item["id"].'">Modif</a></td>';
+                    echo '<td><a href="delete.php?id='.$item["id"].'">Suppr</a></td>';
                     echo '</tr>';
                 }
 

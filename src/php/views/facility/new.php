@@ -28,6 +28,9 @@ echo '
         <div class="ui input error">
             <input type="number" name="horse_capacity" placeholder="Capacité stockage chevaux>
         </div>
+        <button class="ui primary button">
+            <input type="submit" name="submit" value="Créer">
+        </button>
         
         <a href="../../accueil.php">Retour</a>
     </form>

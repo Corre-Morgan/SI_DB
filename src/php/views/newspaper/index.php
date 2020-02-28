@@ -3,7 +3,7 @@ require_once "../../controllers/newspaper.php";
 include_once '../../header.php';
 ini_set('display_errors', 'on');
 error_reporting(E_ALL);
-UserController::load_newspapers();
+NewspaperController::load_newspapers();
 echo '
     <table>
         <thead>
@@ -20,6 +20,8 @@ echo '
                     foreach ($news as $data){
                         echo '<td>'.$data.'</td>';
                     }
+                    echo '<td><a href="edit.php?id='.$news["id"].'">Modif</a></td>';
+                    echo '<td><a href="delete.php?id='.$news["id"].'">Suppr</a></td>';
                     echo '</tr>';
                 }
 

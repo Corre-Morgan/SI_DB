@@ -32,7 +32,9 @@ Class UserController{
                 last_name = "'.$params['last_name'].'",birth_date = "'.$params['birthdate'].'", address = "'.$params['address'].'",
                 avatar = "'.$params['avatar'].'", description = "'.$params['description'].'", website = "'.$params['website'].'"
                 WHERE id ='. $id;
-        Database::get_instance($_SESSION['pseudo'], $_SESSION['password'])->query($query);
+        var_dump($id);
+        var_dump(Database::get_instance($_SESSION['pseudo'], $_SESSION['password'])->query($query));
+        die();
     }
 
     static function delete($id){

@@ -3,7 +3,7 @@ require_once "../../controllers/article.php";
 include_once '../../header.php';
 ini_set('display_errors', 'on');
 error_reporting(E_ALL);
-UserController::load_articles();
+ArticleController::load_articles();
 echo '
     <table>
         <thead>
@@ -21,6 +21,8 @@ echo '
                     foreach ($article as $data){
                         echo '<td>'.$data.'</td>';
                     }
+                    echo '<td><a href="edit.php?id='.$article["id"].'">Modif</a></td>';
+                    echo '<td><a href="delete.php?id='.$article["id"].'">Suppr</a></td>';
                     echo '</tr>';
                 }
 
