@@ -1,4 +1,9 @@
 <?php
+require_once "../../controllers/newspaper_article.php";
+include_once '../../header.php';
+ini_set('display_errors', 'on');
+error_reporting(E_ALL);
+UserController::load_users();
 echo '
     <table>
         <thead>
