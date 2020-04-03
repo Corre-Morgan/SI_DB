@@ -26,6 +26,7 @@
 
         <a href="php/connexion.php">Connexion</a>
         <a href="php/views/user/new.php">Create</a>
+        <a href="php/seeds/seed.php">Seeds</a>
 
         <div id="container-1">
             <ul>

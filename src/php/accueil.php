@@ -2,7 +2,7 @@
 ini_set('display_errors', 'on');
 error_reporting(E_ALL);
 echo '<div class="menu">
-          <a href="views/article/index.php">Article</a>
+          <a href="views/article/index.php?number=20">Article</a>
           <a href="views/contest/index.php">Contest</a>
           <a href="views/etablishment/index.php">Etablishment</a>
           <a href="views/facility/index.php">Facility</a>
