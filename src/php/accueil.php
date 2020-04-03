@@ -21,5 +21,3 @@ echo '<div class="menu">
           <a href="views/transaction/index.php">Transaction</a>
           <a href="views/user/index.php">User</a>
       </div>';
-
-

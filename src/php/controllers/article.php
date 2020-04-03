@@ -8,9 +8,9 @@ Class ArticleController{
         $_SESSION['article'] = Database::get_instance($_SESSION['pseudo'], $_SESSION['password'])->query('SELECT * FROM Article WHERE id ='. $id)->fetch(PDO::FETCH_ASSOC);
     }
 
-    static function load_articles(){
+    static function load_articles($number){
         $_SESSION['articles'] = array();
-        $temp = Database::get_instance($_SESSION['pseudo'], $_SESSION['password'])->query('SELECT * FROM Article');
+        $temp = Database::get_instance($_SESSION['pseudo'], $_SESSION['password'])->query('SELECT * FROM Article LIMIT '.$number.' OFFSET '.$number-20);
         while( $row = $temp->fetch(PDO::FETCH_ASSOC)){
             array_push($_SESSION['articles'], $row);
         }
