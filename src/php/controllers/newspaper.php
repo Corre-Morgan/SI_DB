@@ -8,9 +8,10 @@ Class NewspaperController{
         $_SESSION['newspaper'] = Database::get_instance($_SESSION['pseudo'], $_SESSION['password'])->query('SELECT * FROM Newspaper WHERE id ='. $id)->fetch(PDO::FETCH_ASSOC);
     }
 
-    static function load_newspapers(){
+    static function load_newspapers($number){
+        $start = $number - 20;
         $_SESSION['newspapers'] =array();
-        $temp = Database::get_instance($_SESSION['pseudo'], $_SESSION['password'])->query('SELECT * FROM Newspaper');
+        $temp = Database::get_instance($_SESSION['pseudo'], $_SESSION['password'])->query('SELECT * FROM Newspaper LIMIT '.$number.' OFFSET '.$start);
         while( $row = $temp->fetch(PDO::FETCH_ASSOC)){
             array_push($_SESSION['newspapers'], $row);
         }

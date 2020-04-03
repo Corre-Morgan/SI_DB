@@ -8,9 +8,10 @@ Class PrizeController{
         $_SESSION['prize'] = Database::get_instance($_SESSION['pseudo'], $_SESSION['password'])->query('SELECT * FROM Prize WHERE id_contest ='. $id)->fetch(PDO::FETCH_ASSOC);
     }
 
-    static function load_prizes(){
+    static function load_prizes($number){
+        $start = $number - 20;
         $_SESSION['prizes'] = array();
-        $temp = Database::get_instance($_SESSION['pseudo'], $_SESSION['password'])->query('SELECT * FROM Prize');
+        $temp = Database::get_instance($_SESSION['pseudo'], $_SESSION['password'])->query('SELECT * FROM Prize LIMIT '.$number.' OFFSET '.$start);
         while( $row = $temp->fetch(PDO::FETCH_ASSOC)){
             array_push($_SESSION['prizes'], $row);
         }

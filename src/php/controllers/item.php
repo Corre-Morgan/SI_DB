@@ -8,16 +8,17 @@ Class ItemController{
         $_SESSION['item'] = Database::get_instance($_SESSION['pseudo'], $_SESSION['password'])->query('SELECT * FROM Item WHERE id ='. $id)->fetch(PDO::FETCH_ASSOC);
     }
 
-    static function load_items(){
+    static function load_items($number){
+        $start = $number - 20;
         $_SESSION['items'] = array();
-        $temp = Database::get_instance($_SESSION['pseudo'], $_SESSION['password'])->query('SELECT * FROM Item');
+        $temp = Database::get_instance($_SESSION['pseudo'], $_SESSION['password'])->query('SELECT * FROM Item LIMIT '.$number.' OFFSET '.$start);
         while( $row = $temp->fetch(PDO::FETCH_ASSOC)){
             array_push($_SESSION['items'], $row);
         }
     }
 
     static function create($params){
-        $query = 'INSERT INTO Item (id_facility, id_horse, type, lvl, description, item_family, price) 
+        $query = 'INSERT INTO Item (id_facility, id_horse, type, lvl, description, item_family, price)
                 VALUES ('.$params['id_facility'].','.$params['id_horse'].',"'.$params['type'].'",'.$params['lvl'].',
                 "'.$params['description'].'","'.$params['item_family'].'",'.$params['price'].')';
         Database::get_instance($_SESSION['pseudo'], $_SESSION['password'])->query($query);

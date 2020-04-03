@@ -8,9 +8,10 @@ Class TransactionController{
         $_SESSION['transaction'] = Database::get_instance($_SESSION['pseudo'], $_SESSION['password'])->query('SELECT * FROM Transaction WHERE id ='. $id)->fetch(PDO::FETCH_ASSOC);
     }
 
-    static function load_transactions(){
+    static function load_transactions($number){
+        $start = $number - 20;
         $_SESSION['transactions'] = array();
-        $temp = Database::get_instance($_SESSION['pseudo'], $_SESSION['password'])->query('SELECT * FROM Transaction');
+        $temp = Database::get_instance($_SESSION['pseudo'], $_SESSION['password'])->query('SELECT * FROM Transaction LIMIT '.$number.' OFFSET '.$start);
         while( $row = $temp->fetch(PDO::FETCH_ASSOC)){
             array_push($_SESSION['transactions'], $row);
         }

@@ -8,16 +8,17 @@ Class ContestController{
         $_SESSION['contest'] = Database::get_instance($_SESSION['pseudo'], $_SESSION['password'])->query('SELECT * FROM Contest WHERE id ='. $id)->fetch(PDO::FETCH_ASSOC);
     }
 
-    static function load_contests(){
+    static function load_contests($number){
+        $start = $number - 20;
         $_SESSION['contests'] = array();
-        $temp = Database::get_instance($_SESSION['pseudo'], $_SESSION['password'])->query('SELECT * FROM Contest');
+        $temp = Database::get_instance($_SESSION['pseudo'], $_SESSION['password'])->query('SELECT * FROM Contest LIMIT '.$number.' OFFSET '.$start);
         while( $row = $temp->fetch(PDO::FETCH_ASSOC)){
             array_push($_SESSION['contests'], $row);
         }
     }
 
     static function create($params){
-        $query = 'INSERT INTO Contest (id_etablishment, id_facility, begin_date, end_date, price) 
+        $query = 'INSERT INTO Contest (id_etablishment, id_facility, begin_date, end_date, price)
                 VALUES ('.$params['id_etablishment'].','.$params['id_facility'].',"'.$params['begin_date'].'","'.$params['end_date'].'",
                 '.$params['price'].')';
         Database::get_instance($_SESSION['pseudo'], $_SESSION['password'])->query($query);

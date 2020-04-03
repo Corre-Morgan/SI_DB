@@ -35,6 +35,6 @@ echo '
 ';
 
 if ($_GET["number"] > 20) {
-  echo '<a href="#?number='.$numbermoins.'">Page précédante</a>';
+  echo '<a href="index.php?number='.$numbermoins.'">Page précédente</a>';
 }
-echo '<a href="#?number='.$numberplus.'">Page suivante</a>';
+echo '<a href="index.php?number='.$numberplus.'">Page suivante</a>';

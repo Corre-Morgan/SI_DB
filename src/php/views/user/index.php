@@ -3,7 +3,7 @@ require_once "../../controllers/user.php";
 include_once '../../header.php';
 ini_set('display_errors', 'on');
 error_reporting(E_ALL);
-UserController::load_users();
+UserController::load_users($_GET["number"]);
 
 echo '
     <table>
@@ -41,6 +41,10 @@ echo '
                 }
   echo' </tbody>
     </table>
-    
+
     <a href="new.php">Nouveau</a>
 ';
+if ($_GET["number"] > 20) {
+  echo '<a href="index.php?number='.$numbermoins.'">Page précédente</a>';
+}
+echo '<a href="index.php?number='.$numberplus.'">Page suivante</a>';

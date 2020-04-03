@@ -8,9 +8,10 @@ Class FacilityController{
         $_SESSION['facility'] = Database::get_instance($_SESSION['pseudo'], $_SESSION['password'])->query('SELECT * FROM Facility WHERE id ='. $id)->fetch(PDO::FETCH_ASSOC);
     }
 
-    static function load_facilities(){
+    static function load_facilities($number){
+        $start = $number - 20;
         $_SESSION['facilities'] = array();
-        $temp = Database::get_instance($_SESSION['pseudo'], $_SESSION['password'])->query('SELECT * FROM Facility');
+        $temp = Database::get_instance($_SESSION['pseudo'], $_SESSION['password'])->query('SELECT * FROM Facility LIMIT '.$number.' OFFSET '.$start);
         while( $row = $temp->fetch(PDO::FETCH_ASSOC)){
             array_push($_SESSION['facilities'], $row);
         }
@@ -18,7 +19,7 @@ Class FacilityController{
 
     static function create($params){
         $query = 'INSERT INTO Facility (id_etablishment, type, lvl, description, family, price, ressource_consumption, item_capacity,
-                horse_capacity) 
+                horse_capacity)
                 VALUES ('.$params['id_etablishment'].',"'.$params['type'].'",'.$params['lvl'].',"'.$params['description'].'",
                 "'.$params['family'].'",'.$params['price'].','.$params['ressource_consumption'].','.$params['item_capacity'].','.$params['horse_capacity'].')';
         Database::get_instance($_SESSION['pseudo'], $_SESSION['password'])->query($query);

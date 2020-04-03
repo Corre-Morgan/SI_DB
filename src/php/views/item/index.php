@@ -3,7 +3,7 @@ require_once "../../controllers/item.php";
 include_once '../../header.php';
 ini_set('display_errors', 'on');
 error_reporting(E_ALL);
-ItemController::load_items();
+ItemController::load_items($_GET["number"]);
 echo '
     <table>
         <thead>
@@ -31,6 +31,10 @@ echo '
 
   echo' </tbody>
     </table>
-    
+
     <a href="new.php">Nouveau</a>
 ';
+if ($_GET["number"] > 20) {
+  echo '<a href="index.php?number='.$numbermoins.'">Page précédente</a>';
+}
+echo '<a href="index.php?number='.$numberplus.'">Page suivante</a>';

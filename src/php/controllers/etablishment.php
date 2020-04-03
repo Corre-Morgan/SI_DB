@@ -8,9 +8,10 @@ Class EtablishmentController{
         $_SESSION['etablishment'] = Database::get_instance($_SESSION['pseudo'], $_SESSION['password'])->query('SELECT * FROM Etablishment WHERE id ='. $id)->fetch(PDO::FETCH_ASSOC);
     }
 
-    static function load_etablishments(){
+    static function load_etablishments($number){
+        $start = $number - 20;
         $_SESSION['etablishments'] = array();
-        $temp = Database::get_instance($_SESSION['pseudo'], $_SESSION['password'])->query('SELECT * FROM Etablishment');
+        $temp = Database::get_instance($_SESSION['pseudo'], $_SESSION['password'])->query('SELECT * FROM Etablishment LIMIT '.$number.' OFFSET '.$start);
         while( $row = $temp->fetch(PDO::FETCH_ASSOC)){
             array_push($_SESSION['etablishments'], $row);
         }

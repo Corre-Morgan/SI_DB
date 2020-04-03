@@ -8,16 +8,17 @@ Class TaskController{
         $_SESSION['task'] = Database::get_instance($_SESSION['pseudo'], $_SESSION['password'])->query('SELECT * FROM Task WHERE id ='. $id)->fetch(PDO::FETCH_ASSOC);
     }
 
-    static function load_tasks(){
+    static function load_tasks($nummber){
+        $start = $number - 20;
         $_SESSION['tasks'] = array();
-        $temp = Database::get_instance($_SESSION['pseudo'], $_SESSION['password'])->query('SELECT * FROM Task');
+        $temp = Database::get_instance($_SESSION['pseudo'], $_SESSION['password'])->query('SELECT * FROM Task LIMIT '.$number.' OFFSET '.$start);
         while( $row = $temp->fetch(PDO::FETCH_ASSOC)){
             array_push($_SESSION['tasks'], $row);
         }
     }
 
     static function create($params){
-        $query = 'INSERT INTO Task (id_etablishment, id_item, action, frequency) 
+        $query = 'INSERT INTO Task (id_etablishment, id_item, action, frequency)
                 VALUES ('.$params['id_etablishment'].','.$params['id_item'].',"'.$params['action'].'",'.$params['frequency'].')';
         Database::get_instance($_SESSION['pseudo'], $_SESSION['password'])->query($query);
     }

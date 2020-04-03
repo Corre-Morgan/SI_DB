@@ -8,9 +8,10 @@ Class IssueController{
         $_SESSION['issue'] = Database::get_instance($_SESSION['pseudo'], $_SESSION['password'])->query('SELECT * FROM Issue WHERE id ='. $id)->fetch(PDO::FETCH_ASSOC);
     }
 
-    static function load_issues(){
+    static function load_issues($number){
+        $start = $number - 20;
         $_SESSION['issues'] = array();
-        $temp = Database::get_instance($_SESSION['pseudo'], $_SESSION['password'])->query('SELECT * FROM Issue');
+        $temp = Database::get_instance($_SESSION['pseudo'], $_SESSION['password'])->query('SELECT * FROM Issue LIMIT '.$number.' OFFSET '.$start);
         while( $row = $temp->fetch(PDO::FETCH_ASSOC)){
             array_push($_SESSION['issues'], $row);
         }

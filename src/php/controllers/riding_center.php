@@ -8,9 +8,10 @@ Class RidingCenterController{
         $_SESSION['riding_center'] = Database::get_instance($_SESSION['pseudo'], $_SESSION['password'])->query('SELECT * FROM Riding_center WHERE id_etablishment ='. $id)->fetch(PDO::FETCH_ASSOC);
     }
 
-    static function load_riding_centers(){
+    static function load_riding_centers($number){
+        $start = $number - 20;
         $_SESSION['riding_centers'] = array();
-        $temp = Database::get_instance($_SESSION['pseudo'], $_SESSION['password'])->query('SELECT * FROM Riding_center');
+        $temp = Database::get_instance($_SESSION['pseudo'], $_SESSION['password'])->query('SELECT * FROM Riding_center LIMIT '.$number.' OFFSET '.$start);
         while( $row = $temp->fetch(PDO::FETCH_ASSOC)){
             array_push($_SESSION['riding_centers'], $row);
         }

@@ -3,7 +3,7 @@ require_once "../../controllers/transaction.php";
 include_once '../../header.php';
 ini_set('display_errors', 'on');
 error_reporting(E_ALL);
-TransactionController::load_transactions();
+TransactionController::load_transactions($_GET["number"]);
 echo '
     <table>
         <thead>
@@ -25,6 +25,10 @@ echo '
                     echo '</tr>';
                 }
   echo' </tbody>
-    </table>  
+    </table>
     <a href="new.php">Nouveau</a>
 ';
+if ($_GET["number"] > 20) {
+  echo '<a href="index.php?number='.$numbermoins.'">Page précédente</a>';
+}
+echo '<a href="index.php?number='.$numberplus.'">Page suivante</a>';

@@ -8,9 +8,10 @@ Class RidingClubController{
         $_SESSION['riding_club'] = Database::get_instance($_SESSION['pseudo'], $_SESSION['password'])->query('SELECT * FROM Riding_club WHERE id_etablishment ='. $id)->fetch(PDO::FETCH_ASSOC);
     }
 
-    static function load_riding_clubs(){
+    static function load_riding_clubs($number){
+        $start = $number - 20;
         $_SESSION['riding_clubs'] = array();
-        $temp = Database::get_instance($_SESSION['pseudo'], $_SESSION['password'])->query('SELECT * FROM Riding_club');
+        $temp = Database::get_instance($_SESSION['pseudo'], $_SESSION['password'])->query('SELECT * FROM Riding_club LIMIT '.$number.' OFFSET '.$start);
         while( $row = $temp->fetch(PDO::FETCH_ASSOC)){
             array_push($_SESSION['riding_clubs'], $row);
         }

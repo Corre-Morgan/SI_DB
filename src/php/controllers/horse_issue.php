@@ -8,9 +8,10 @@ Class HorseIssueController{
         $_SESSION['horse_issue'] = Database::get_instance($_SESSION['pseudo'], $_SESSION['password'])->query('SELECT * FROM Horse_issue WHERE id_horse = '.$params['id_horse'].' AND id_issue = '.$params['id_issue'])->fetch(PDO::FETCH_ASSOC);
     }
 
-    static function load_horse_issues(){
+    static function load_horse_issues($number){
+        $start = $number - 20;
         $_SESSION['horse_issues'] = array();
-        $temp= Database::get_instance($_SESSION['pseudo'], $_SESSION['password'])->query('SELECT * FROM Horse_issue');
+        $temp= Database::get_instance($_SESSION['pseudo'], $_SESSION['password'])->query('SELECT * FROM Horse_issue LIMIT '.$number.' OFFSET '.$start);
         while( $row = $temp->fetch(PDO::FETCH_ASSOC)){
             array_push($_SESSION['horse_issues'], $row);
         }
